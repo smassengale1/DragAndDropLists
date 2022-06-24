@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 typedef void OnExpansionChanged(bool expanded);
+typedef void OnTap();
 
 /// This class mirrors flutter's [ExpansionTile], with similar options.
 class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
@@ -25,6 +26,10 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
 
   /// This function will be called when the expansion of a tile is changed.
   final OnExpansionChanged? onExpansionChanged;
+
+  /// activates when expansion header is tapped
+  final Widget? onTap;
+
   final Color? backgroundColor;
   final List<DragAndDropItem>? children;
   final Widget? contentsWhenEmpty;
@@ -53,6 +58,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
     this.onExpansionChanged,
     this.contentsWhenEmpty,
     this.lastTarget,
+    this.onTap,
     required this.listKey,
     this.canDrag = true,
     this.disableTopAndBottomBorders = false,
@@ -64,18 +70,21 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   Widget generateWidget(DragAndDropBuilderParameters params) {
     var contents = _generateDragAndDropListInnerContents(params);
 
-    Widget expandable = ProgrammaticExpansionTile(
-      title: title,
-      listKey: listKey,
-      subtitle: subtitle,
-      trailing: trailing,
-      leading: leading,
-      disableTopAndBottomBorders: disableTopAndBottomBorders,
-      backgroundColor: backgroundColor,
-      initiallyExpanded: initiallyExpanded,
-      onExpansionChanged: _onSetExpansion,
-      key: _expansionKey,
-      children: contents,
+    Widget expandable = GestureDetector(
+      child: ProgrammaticExpansionTile(
+        title: title,
+        listKey: listKey,
+        subtitle: subtitle,
+        trailing: trailing,
+        leading: leading,
+        disableTopAndBottomBorders: disableTopAndBottomBorders,
+        backgroundColor: backgroundColor,
+        initiallyExpanded: initiallyExpanded,
+        onExpansionChanged: _onSetExpansion,
+        key: _expansionKey,
+        children: contents,
+      ),
+      onTap: _onTap,
     );
 
     if (params.listDecoration != null) {
@@ -200,6 +209,10 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
     _expanded.value = expanded;
 
     if (onExpansionChanged != null) onExpansionChanged!(expanded);
+  }
+
+  _onTap() {
+    if (onTap != null) onTap!;
   }
 
   @override
