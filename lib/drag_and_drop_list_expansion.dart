@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 typedef void OnExpansionChanged(bool expanded);
-typedef void OnTap();
+typedef VoidCallback OnTap();
 
 /// This class mirrors flutter's [ExpansionTile], with similar options.
 class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
@@ -28,7 +28,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   final OnExpansionChanged? onExpansionChanged;
 
   /// activates when expansion header is tapped
-  final Widget? onTap;
+  final OnTap? onTap;
 
   final Color? backgroundColor;
   final List<DragAndDropItem>? children;
