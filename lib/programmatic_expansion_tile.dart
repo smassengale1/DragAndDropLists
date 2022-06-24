@@ -77,7 +77,7 @@ class ProgrammaticExpansionTile extends StatefulWidget {
   /// Typically [ListTile] widgets.
   final List<Widget?> children;
 
-  final VoidCallback onTap;
+  final GestureTapCallback onTap;
 
   /// The color to display behind the sublist when expanded.
   final Color? backgroundColor;
@@ -139,7 +139,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
 
     // Schedule the notification that widget has changed for after init
     // to ensure that the parent widget maintains the correct state
-    SchedulerBinding.instance!.addPostFrameCallback((Duration duration) {
+    SchedulerBinding.instance.addPostFrameCallback((Duration duration) {
       if (widget.onExpansionChanged != null &&
           _isExpanded != widget.initiallyExpanded) {
         widget.onExpansionChanged!(_isExpanded);
