@@ -212,7 +212,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   }
 
   _onTap() {
-    if (onTap != null) onTap!;
+    if (onTap != null) onTap!();
   }
 
   @override
