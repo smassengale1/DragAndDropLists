@@ -70,7 +70,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   Widget generateWidget(DragAndDropBuilderParameters params) {
     var contents = _generateDragAndDropListInnerContents(params);
 
-    Widget expandable = InkWell(
+    Widget expandable = GestureDetector(
       child: ProgrammaticExpansionTile(
         title: title,
         listKey: listKey,
