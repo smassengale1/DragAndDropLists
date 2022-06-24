@@ -27,7 +27,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   final OnExpansionChanged? onExpansionChanged;
 
   /// activates when expansion header is tapped
-  final GestureDetector? onTap;
+  final GestureTapCallback? onTap;
 
   final Color? backgroundColor;
   final List<DragAndDropItem>? children;
