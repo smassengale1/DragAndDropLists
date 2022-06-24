@@ -30,6 +30,7 @@ class ProgrammaticExpansionTile extends StatefulWidget {
   const ProgrammaticExpansionTile({
     required Key key,
     required this.listKey,
+    required this.onTap,
     this.leading,
     required this.title,
     this.subtitle,
@@ -75,6 +76,8 @@ class ProgrammaticExpansionTile extends StatefulWidget {
   ///
   /// Typically [ListTile] widgets.
   final List<Widget?> children;
+
+  final VoidCallback onTap;
 
   /// The color to display behind the sublist when expanded.
   final Color? backgroundColor;
@@ -189,43 +192,48 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
     final Color borderSideColor = _borderColor.value ?? Colors.transparent;
     bool setBorder = !widget.disableTopAndBottomBorders;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: _backgroundColor.value ?? Colors.transparent,
-        border: setBorder
-            ? Border(
-                top: BorderSide(color: borderSideColor),
-                bottom: BorderSide(color: borderSideColor),
-              )
-            : null,
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          ListTileTheme.merge(
-            iconColor: _iconColor.value,
-            textColor: _headerColor.value,
-            child: ListTile(
-              onTap: toggle,
-              leading: widget.leading,
-              title: widget.title,
-              subtitle: widget.subtitle,
-              isThreeLine: widget.isThreeLine,
-              trailing: widget.trailing ??
-                  RotationTransition(
-                    turns: _iconTurns,
-                    child: const Icon(Icons.expand_more),
-                  ),
+    return InkWell(
+      child: Container(
+        decoration: BoxDecoration(
+          color: _backgroundColor.value ?? Colors.transparent,
+          border: setBorder
+              ? Border(
+            top: BorderSide(color: borderSideColor),
+            bottom: BorderSide(color: borderSideColor),
+          )
+              : null,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            ListTileTheme.merge(
+              iconColor: _iconColor.value,
+              textColor: _headerColor.value,
+              child: ListTile(
+                onTap: toggle,
+                leading: widget.leading,
+                title: widget.title,
+                subtitle: widget.subtitle,
+                isThreeLine: widget.isThreeLine,
+                trailing: widget.trailing ??
+                    RotationTransition(
+                      turns: _iconTurns,
+                      child: const Icon(Icons.expand_more),
+                    ),
+              ),
             ),
-          ),
-          ClipRect(
-            child: Align(
-              heightFactor: _heightFactor.value,
-              child: child,
+            ClipRect(
+              child: Align(
+                heightFactor: _heightFactor.value,
+                child: child,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
+      onTap: () {
+        widget.onTap();
+      },
     );
   }
 
