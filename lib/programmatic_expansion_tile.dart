@@ -192,8 +192,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
     final Color borderSideColor = _borderColor.value ?? Colors.transparent;
     bool setBorder = !widget.disableTopAndBottomBorders;
 
-    return GestureDetector(
-      child: Container(
+    return Container(
         decoration: BoxDecoration(
           color: _backgroundColor.value ?? Colors.transparent,
           border: setBorder
@@ -230,9 +229,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
             ),
           ],
         ),
-      ),
-      onTap: widget.onTap
-    );
+      );
   }
 
   @override
@@ -255,7 +252,10 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
     return AnimatedBuilder(
       animation: _controller.view,
       builder: _buildChildren,
-      child: closed ? null : Column(children: widget.children as List<Widget>),
+      child: closed ? null : GestureDetector(
+        child: Column(children: widget.children as List<Widget>),
+        onTap: widget.onTap
+      )
     );
   }
 }
