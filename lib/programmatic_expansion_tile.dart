@@ -209,7 +209,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
               iconColor: _iconColor.value,
               textColor: _headerColor.value,
               child: ListTile(
-                onTap: toggle,
+                onTap: widget.onTap ?? toggle,
                 leading: widget.leading,
                 title: widget.title,
                 subtitle: widget.subtitle,
