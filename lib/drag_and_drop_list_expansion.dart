@@ -84,7 +84,9 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
         key: _expansionKey,
         children: contents,
       ),
-      onTap: _onTap,
+      onTap: () {
+        _onTap();
+      },
     );
 
     if (params.listDecoration != null) {
