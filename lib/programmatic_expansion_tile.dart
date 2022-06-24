@@ -231,9 +231,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
           ],
         ),
       ),
-      onTap: () {
-        widget.onTap();
-      },
+      onTap: widget.onTap
     );
   }
 
