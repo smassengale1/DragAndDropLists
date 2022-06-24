@@ -77,7 +77,7 @@ class ProgrammaticExpansionTile extends StatefulWidget {
   /// Typically [ListTile] widgets.
   final List<Widget?> children;
 
-  final GestureTapCallback onTap;
+  final GestureTapCallback? onTap;
 
   /// The color to display behind the sublist when expanded.
   final Color? backgroundColor;
