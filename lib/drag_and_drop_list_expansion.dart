@@ -212,6 +212,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   }
 
   _onTap() {
+    print("HERE");
     if (onTap != null) onTap!();
   }
 
