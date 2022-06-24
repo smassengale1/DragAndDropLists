@@ -163,6 +163,9 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
 
   void toggle() {
     _setExpanded(!_isExpanded);
+    if (widget.onTap != null) {
+      widget.onTap!();
+    }
   }
 
   void _setExpanded(bool expanded) {
@@ -209,7 +212,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
               iconColor: _iconColor.value,
               textColor: _headerColor.value,
               child: ListTile(
-                onTap: widget.onTap ?? toggle,
+                onTap: toggle,
                 leading: widget.leading,
                 title: widget.title,
                 subtitle: widget.subtitle,
