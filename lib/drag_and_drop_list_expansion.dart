@@ -70,24 +70,20 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   Widget generateWidget(DragAndDropBuilderParameters params) {
     var contents = _generateDragAndDropListInnerContents(params);
 
-    Widget expandable = GestureDetector(
-      child: ProgrammaticExpansionTile(
-        title: title,
-        listKey: listKey,
-        subtitle: subtitle,
-        trailing: trailing,
-        leading: leading,
-        disableTopAndBottomBorders: disableTopAndBottomBorders,
-        backgroundColor: backgroundColor,
-        initiallyExpanded: initiallyExpanded,
-        onExpansionChanged: _onSetExpansion,
-        key: _expansionKey,
-        onTap: () {
-          _onTap();
-        },
-        children: contents,
-      ),
-    );
+    Widget expandable = ProgrammaticExpansionTile(
+      title: title,
+      listKey: listKey,
+      subtitle: subtitle,
+      trailing: trailing,
+      leading: leading,
+      disableTopAndBottomBorders: disableTopAndBottomBorders,
+      backgroundColor: backgroundColor,
+      initiallyExpanded: initiallyExpanded,
+      onExpansionChanged: _onSetExpansion,
+      key: _expansionKey,
+      onTap: _onTap,
+      children: contents,
+    ),;
 
     if (params.listDecoration != null) {
       expandable = Container(
