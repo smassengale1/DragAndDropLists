@@ -162,7 +162,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
   }
 
   void toggle() {
-    _setExpanded(!_isExpanded);
+    // _setExpanded(!_isExpanded);
     if (widget.onTap != null) {
       widget.onTap!();
     }
