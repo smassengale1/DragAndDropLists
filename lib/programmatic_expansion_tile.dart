@@ -192,7 +192,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
     final Color borderSideColor = _borderColor.value ?? Colors.transparent;
     bool setBorder = !widget.disableTopAndBottomBorders;
 
-    return InkWell(
+    return GestureDetector(
       child: Container(
         decoration: BoxDecoration(
           color: _backgroundColor.value ?? Colors.transparent,
