@@ -214,10 +214,6 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
     if (onExpansionChanged != null) onExpansionChanged!(expanded);
   }
 
-  _onTap() {
-    if (onTap != null) onTap!;
-  }
-
   @override
   get isExpanded => _expanded.value;
 
