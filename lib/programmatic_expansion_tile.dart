@@ -215,15 +215,14 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
                 textColor: _headerColor.value,
                 child: ListTile(
                   onTap: toggle,
-                  leading: widget.leading,
+                  leading: RotationTransition(
+                    turns: _iconTurns,
+                    child: const Icon(Icons.expand_more),
+                  ),
                   title: widget.title,
                   subtitle: widget.subtitle,
                   isThreeLine: widget.isThreeLine,
-                  trailing: widget.trailing ??
-                      RotationTransition(
-                        turns: _iconTurns,
-                        child: const Icon(Icons.expand_more),
-                      ),
+                  trailing: widget.trailing,
                 ),
               ),
             ),
