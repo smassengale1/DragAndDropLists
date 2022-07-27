@@ -35,6 +35,7 @@ class ProgrammaticExpansionTile extends StatefulWidget {
     this.leading,
     required this.title,
     required this.headerElevation,
+    this.headerHorizontalGap,
     this.subtitle,
     this.isThreeLine = false,
     this.backgroundColor,
@@ -95,6 +96,8 @@ class ProgrammaticExpansionTile extends StatefulWidget {
 
   /// Specifies if the list tile is initially expanded (true) or collapsed (false, the default).
   final bool initiallyExpanded;
+
+  final double? headerHorizontalGap;
 
   /// Disable to borders displayed at the top and bottom when expanded
   final bool disableTopAndBottomBorders;
@@ -223,6 +226,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
                 textColor: _headerColor.value,
                 child: ListTile(
                   onTap: toggle,
+                  horizontalTitleGap: widget.headerHorizontalGap,
                   leading: RotationTransition(
                     turns: _iconTurns,
                     child: Icon(Icons.expand_more, color: widget.iconColor),

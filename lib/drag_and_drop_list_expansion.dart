@@ -35,6 +35,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   final Widget? lastTarget;
   final Color iconColor;
   final double headerElevation;
+  final double? headerHorizontalGap;
 
   /// Whether or not this item can be dragged.
   /// Set to true if it can be reordered.
@@ -60,6 +61,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
     this.backgroundColor,
     this.onExpansionChanged,
     this.contentsWhenEmpty,
+    this.headerHorizontalGap,
     this.lastTarget,
     this.onTap,
     required this.listKey,
