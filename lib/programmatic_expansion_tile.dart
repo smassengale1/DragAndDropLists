@@ -31,8 +31,10 @@ class ProgrammaticExpansionTile extends StatefulWidget {
     required Key key,
     required this.listKey,
     required this.onTap,
+    required this.iconColor,
     this.leading,
     required this.title,
+    required this.headerElevation,
     this.subtitle,
     this.isThreeLine = false,
     this.backgroundColor,
@@ -49,6 +51,12 @@ class ProgrammaticExpansionTile extends StatefulWidget {
   ///
   /// Typically a [CircleAvatar] widget.
   final Widget? leading;
+
+  /// color of icons on group
+  final Color iconColor;
+
+  /// elevation of header element
+  final double headerElevation;
 
   /// The primary content of the list item.
   ///
@@ -209,7 +217,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             Card(
-              elevation: 2,
+              elevation: widget.headerElevation,
               child: ListTileTheme.merge(
                 iconColor: _iconColor.value,
                 textColor: _headerColor.value,
@@ -217,7 +225,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
                   onTap: toggle,
                   leading: RotationTransition(
                     turns: _iconTurns,
-                    child: const Icon(Icons.expand_more),
+                    child: Icon(Icons.expand_more, color: widget.iconColor),
                   ),
                   title: widget.title,
                   subtitle: widget.subtitle,

@@ -33,6 +33,8 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   final List<DragAndDropItem>? children;
   final Widget? contentsWhenEmpty;
   final Widget? lastTarget;
+  final Color iconColor;
+  final double headerElevation;
 
   /// Whether or not this item can be dragged.
   /// Set to true if it can be reordered.
@@ -52,6 +54,8 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
     this.subtitle,
     this.trailing,
     this.leading,
+    this.iconColor = Colors.white,
+    this.headerElevation = 5.0,
     this.initiallyExpanded = false,
     this.backgroundColor,
     this.onExpansionChanged,
@@ -75,6 +79,8 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
       subtitle: subtitle,
       trailing: trailing,
       leading: leading,
+      iconColor: iconColor,
+      headerElevation: headerElevation,
       disableTopAndBottomBorders: disableTopAndBottomBorders,
       backgroundColor: backgroundColor,
       initiallyExpanded: initiallyExpanded,
