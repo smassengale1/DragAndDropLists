@@ -79,7 +79,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
                     offset: _feedbackContainerOffset(),
                     child: feedback,
                   ),
-                  childWhenDragging: ListTile(title: Text("HI")),
+                  childWhenDragging: Container(),
                   onDragStarted: () => _setDragging(true),
                   onDragCompleted: () => _setDragging(false),
                   onDraggableCanceled: (_, __) => _setDragging(false),
@@ -96,7 +96,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
           child: dragAndDropListContents,
           feedback:
               buildFeedbackWithoutHandle(context, dragAndDropListContents),
-          childWhenDragging: ListTile(title: Text("HI HELLO")),
+          childWhenDragging: Container(),
           onDragStarted: () => _setDragging(true),
           onDragCompleted: () => _setDragging(false),
           onDraggableCanceled: (_, __) => _setDragging(false),
@@ -110,7 +110,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
 
           feedback:
               buildFeedbackWithoutHandle(context, dragAndDropListContents),
-          childWhenDragging: ListTile(title: Text("HI There")),
+          childWhenDragging: Container(),
           onDragStarted: () => _setDragging(true),
           onDragCompleted: () => _setDragging(false),
           onDraggableCanceled: (_, __) => _setDragging(false),
