@@ -35,6 +35,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
   final Color iconColor;
   final double headerElevation;
   final double? headerHorizontalGap;
+  final ShapeBorder? headerShape;
 
   /// Whether or not this item can be dragged.
   /// Set to true if it can be reordered.
@@ -54,6 +55,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
     this.subtitle,
     this.trailing,
     this.leading,
+    this.headerShape,
     this.iconColor = Colors.white,
     this.headerElevation = 5.0,
     this.initiallyExpanded = false,
@@ -80,7 +82,7 @@ class DragAndDropListExpansion implements DragAndDropListExpansionInterface {
       subtitle: subtitle,
       trailing: trailing,
       leading: leading,
-
+      headerShape: headerShape,
       iconColor: iconColor,
       headerElevation: headerElevation,
       disableTopAndBottomBorders: disableTopAndBottomBorders,

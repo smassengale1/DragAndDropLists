@@ -44,9 +44,12 @@ class ProgrammaticExpansionTile extends StatefulWidget {
     this.trailing,
     this.initiallyExpanded = false,
     this.disableTopAndBottomBorders = false,
+    this.headerShape
   }) : super(key: key);
 
   final Key listKey;
+
+  final ShapeBorder? headerShape;
 
   /// A widget to display before the title.
   ///
@@ -221,6 +224,7 @@ class ProgrammaticExpansionTileState extends State<ProgrammaticExpansionTile>
           children: <Widget>[
             Card(
               elevation: widget.headerElevation,
+              shape: widget.headerShape,
               child: ListTileTheme.merge(
                 iconColor: _iconColor.value,
                 textColor: _headerColor.value,
