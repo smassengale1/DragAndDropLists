@@ -111,7 +111,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
 
           feedback:
               buildFeedbackWithoutHandle(context, dragAndDropListContents),
-          childWhenDragging: ColoredBox(color: Colors.green),
+          childWhenDragging: Container(),
           onDragStarted: () => _setDragging(true),
           onDragCompleted: () => _setDragging(false),
           onDraggableCanceled: (_, __) => _setDragging(false),
