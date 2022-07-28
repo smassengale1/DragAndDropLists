@@ -286,10 +286,16 @@ class DragAndDropLists extends StatefulWidget {
   /// https://github.com/flutter/flutter/issues/14842#issuecomment-371344881
   final bool removeTopPadding;
 
+
+  /// widget to be dispayed whenever a group is being
+  /// dragged
+  final Widget? groupWhenDragging;
+
   DragAndDropLists({
     required this.children,
     required this.onItemReorder,
     required this.onListReorder,
+    this.groupWhenDragging,
     this.onItemAdd,
     this.onListAdd,
     this.onListDraggingChanged,

@@ -1,7 +1,9 @@
 import 'package:drag_and_drop_lists/drag_and_drop_builder_parameters.dart';
 import 'package:drag_and_drop_lists/drag_and_drop_list_interface.dart';
+import 'package:drag_and_drop_lists/drag_and_drop_lists.dart';
 import 'package:drag_and_drop_lists/drag_handle.dart';
 import 'package:drag_and_drop_lists/measure_size.dart';
+import 'package:drag_and_drop_lists/programmatic_expansion_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -90,12 +92,31 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
           ),
         );
       } else if (widget.parameters.dragOnLongPress) {
+        var whenDragging;
+
+        /// hard coded to be what it is on the FE
+        if (widget.dragAndDropList.runtimeType == DragAndDropListExpansion) {
+          var x = widget.dragAndDropList as DragAndDropListExpansion;
+          whenDragging = Card(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              child: ListTile(
+                title: x.title,
+                leading: Icon(x.isExpanded ? Icons.expand_less : Icons.expand_more, color: Theme.of(context).colorScheme.tertiary),
+                trailing: x.trailing,
+              ),
+            ),
+          );
+        } else {
+          whenDragging = buildFeedbackWithoutHandle(context, dragAndDropListContents);
+        }
+
         draggable = LongPressDraggable<DragAndDropListInterface>(
           data: widget.dragAndDropList,
           axis: draggableAxis(),
           child: dragAndDropListContents,
-          feedback:
-              buildFeedbackWithoutHandle(context, dragAndDropListContents),
+          feedback: whenDragging,
+          // feedback: widget.groupWhenDragging ?? buildFeedbackWithoutHandle(context, dragAndDropListContents),
           childWhenDragging: Container(),
           onDragStarted: () => _setDragging(true),
           onDragCompleted: () => _setDragging(false),

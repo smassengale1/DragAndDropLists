@@ -107,8 +107,7 @@ class DragAndDropList implements DragAndDropListInterface {
     );
   }
 
-  List<Widget> _generateDragAndDropListInnerContents(
-      DragAndDropBuilderParameters parameters) {
+  List<Widget> _generateDragAndDropListInnerContents(DragAndDropBuilderParameters parameters) {
     var contents = <Widget>[];
     if (leftSide != null) {
       contents.add(leftSide!);
