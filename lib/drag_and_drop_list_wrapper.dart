@@ -79,7 +79,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
                     offset: _feedbackContainerOffset(),
                     child: feedback,
                   ),
-                  childWhenDragging: Text("HI THERE"),
+                  childWhenDragging: Container(),
                   onDragStarted: () => _setDragging(true),
                   onDragCompleted: () => _setDragging(false),
                   onDraggableCanceled: (_, __) => _setDragging(false),
@@ -96,7 +96,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
           child: dragAndDropListContents,
           feedback:
               buildFeedbackWithoutHandle(context, dragAndDropListContents),
-          childWhenDragging: Container(),
+          childWhenDragging: ColoredBox(color: Colors.green),
           onDragStarted: () => _setDragging(true),
           onDragCompleted: () => _setDragging(false),
           onDraggableCanceled: (_, __) => _setDragging(false),
