@@ -79,7 +79,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
                     offset: _feedbackContainerOffset(),
                     child: feedback,
                   ),
-                  childWhenDragging: Container(),
+                  childWhenDragging: Text("HI THERE"),
                   onDragStarted: () => _setDragging(true),
                   onDragCompleted: () => _setDragging(false),
                   onDraggableCanceled: (_, __) => _setDragging(false),
@@ -106,6 +106,7 @@ class _DragAndDropListWrapper extends State<DragAndDropListWrapper>
         draggable = Draggable<DragAndDropListInterface>(
           data: widget.dragAndDropList,
           axis: draggableAxis(),
+          // child: dragAndDropListContents,
           child: dragAndDropListContents,
 
           feedback:
